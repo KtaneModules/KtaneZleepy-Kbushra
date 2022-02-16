@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Sleeping on your keyboard be like.
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 86714a76144cc2a4b868b362d3eee089, type: 3}
