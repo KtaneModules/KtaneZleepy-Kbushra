@@ -28,6 +28,8 @@ public class SimpleModuleScript : MonoBehaviour {
 	static int ModuleIdCounter;
 	int ModuleId;
 
+	public AudioSource click;
+
 	void Awake()
 	{
 		ModuleId = ModuleIdCounter++;
@@ -43,6 +45,11 @@ public class SimpleModuleScript : MonoBehaviour {
 		}
 	}
 
+	void Start()
+	{
+		Log ("This module is on the bomb."); 
+	}
+
 	public void OnNeedyActivation()
 	{
 		needyActivated = true;
@@ -54,6 +61,8 @@ public class SimpleModuleScript : MonoBehaviour {
 		textMessage2 = Random.Range (1, 31);
 		textFinder2 = textMessage2.ToString ();
 		screenTexts [1].text = textFinder2;
+
+		Log ("Triggered needy");
 	}
 
 	public void OnTimerExpired()
@@ -66,6 +75,7 @@ public class SimpleModuleScript : MonoBehaviour {
 			screenTexts [0].text = textFinder1;
 			textFinder2 = "??";
 			screenTexts [1].text = textFinder2;
+			input = 0;
 		}
 		else 
 		{
@@ -75,6 +85,7 @@ public class SimpleModuleScript : MonoBehaviour {
 			screenTexts [0].text = textFinder1;
 			textFinder2 = "??";
 			screenTexts [1].text = textFinder2;
+			input = 0;
 		}
 	}
 
@@ -110,7 +121,8 @@ public class SimpleModuleScript : MonoBehaviour {
 				case 0:
 					if (textMessage1 == 1) 
 					{
-						input++;	
+						input++;
+						click.Play ();
 					}
 					else 
 					{
@@ -118,12 +130,14 @@ public class SimpleModuleScript : MonoBehaviour {
 						module.HandlePass();
 						needyActivated = false;
 						Log ("Wrong button.");
+						input = 0;
 					}
 					break;
 				case 1:
 					if (textMessage1 == 2) 
 					{
-						input++;	
+						input++;
+						click.Play ();
 					}
 					else 
 					{
@@ -131,12 +145,14 @@ public class SimpleModuleScript : MonoBehaviour {
 						module.HandlePass();
 						needyActivated = false;
 						Log ("Wrong button.");
+						input = 0;
 					}
 					break;
 				case 2:
 					if (textMessage1 == 3) 
 					{
-						input++;	
+						input++;
+						click.Play ();
 					}
 					else 
 					{
@@ -144,6 +160,7 @@ public class SimpleModuleScript : MonoBehaviour {
 						module.HandlePass();
 						needyActivated = false;
 						Log ("Wrong button.");
+						input = 0;
 					}
 					break;
 				}
